@@ -13,7 +13,7 @@ class DoaScreen extends StatefulWidget {
 }
 
 class _DoaScreenState extends State<DoaScreen> {
-  List<Doa> allDoa = [];
+  List<Doa> _allDoa = [];
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _DoaScreenState extends State<DoaScreen> {
 
     DoaService.getDoa().then((value) {
       setState(() {
-        allDoa = value;
+        _allDoa = value;
       });
     });
   }
@@ -68,20 +68,20 @@ class _DoaScreenState extends State<DoaScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: allDoa.isNotEmpty
+                child: _allDoa.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return DoaItem(
-                            id: allDoa[index].id,
-                            name: allDoa[index].name,
-                            verse: allDoa[index].verse,
-                            latin: allDoa[index].latin,
-                            translation: allDoa[index].translation,
+                            id: _allDoa[index].id,
+                            name: _allDoa[index].name,
+                            verse: _allDoa[index].verse,
+                            latin: _allDoa[index].latin,
+                            translation: _allDoa[index].translation,
                           );
                         },
-                        itemCount: allDoa.length,
+                        itemCount: _allDoa.length,
                       )
                     : const Text("Loading..."),
               ),

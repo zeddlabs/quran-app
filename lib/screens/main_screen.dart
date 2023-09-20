@@ -13,19 +13,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Widget> screens = [
+  final List<Widget> _screens = [
     const HomeScreen(),
     const AsmaulHusnaScreen(),
     const JadwalSholatScreen(),
     const DoaScreen(),
   ];
 
-  int currentIndex = 0;
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: _screens[_currentIndex],
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -39,50 +39,74 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         child: BottomNavigationBar(
-          currentIndex: currentIndex,
+          currentIndex: _currentIndex,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
           elevation: 1,
           onTap: (int i) {
             setState(() {
-              currentIndex = i;
+              _currentIndex = i;
             });
           },
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/quran.svg',
-                color: currentIndex == 0
-                    ? const Color(0xFF672CBC)
-                    : const Color(0xFF8789A3),
+                colorFilter: _currentIndex == 0
+                    ? const ColorFilter.mode(
+                        Color(0xFF672CBC),
+                        BlendMode.srcIn,
+                      )
+                    : const ColorFilter.mode(
+                        Color(0xFF8789A3),
+                        BlendMode.srcIn,
+                      ),
               ),
               label: "Al-Quran",
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/lampu.svg',
-                color: currentIndex == 1
-                    ? const Color(0xFF672CBC)
-                    : const Color(0xFF8789A3),
+                colorFilter: _currentIndex == 1
+                    ? const ColorFilter.mode(
+                        Color(0xFF672CBC),
+                        BlendMode.srcIn,
+                      )
+                    : const ColorFilter.mode(
+                        Color(0xFF8789A3),
+                        BlendMode.srcIn,
+                      ),
               ),
               label: "Asmaul Husna",
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/sholat.svg',
-                color: currentIndex == 2
-                    ? const Color(0xFF672CBC)
-                    : const Color(0xFF8789A3),
+                colorFilter: _currentIndex == 2
+                    ? const ColorFilter.mode(
+                        Color(0xFF672CBC),
+                        BlendMode.srcIn,
+                      )
+                    : const ColorFilter.mode(
+                        Color(0xFF8789A3),
+                        BlendMode.srcIn,
+                      ),
               ),
               label: "Jadwal Sholat",
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/doa.svg',
-                color: currentIndex == 3
-                    ? const Color(0xFF672CBC)
-                    : const Color(0xFF8789A3),
+                colorFilter: _currentIndex == 3
+                    ? const ColorFilter.mode(
+                        Color(0xFF672CBC),
+                        BlendMode.srcIn,
+                      )
+                    : const ColorFilter.mode(
+                        Color(0xFF8789A3),
+                        BlendMode.srcIn,
+                      ),
               ),
               label: "Doa",
             ),

@@ -18,7 +18,7 @@ class DetailSurahScreen extends StatefulWidget {
 }
 
 class _DetailSurahScreenState extends State<DetailSurahScreen> {
-  Surah? surah;
+  Surah? _surah;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
 
     QuranService.getSurah(widget.surahNumber).then((value) {
       setState(() {
-        surah = value;
+        _surah = value;
       });
     });
   }
@@ -58,7 +58,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                       width: 8,
                     ),
                     Text(
-                      surah != null ? surah!.surahName : "",
+                      _surah != null ? _surah!.surahName : "",
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF672CBC),
                         fontSize: 20,
@@ -73,7 +73,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: surah != null
+                child: _surah != null
                     ? Column(
                         children: [
                           Container(
@@ -119,7 +119,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                                         CrossAxisAlignment.stretch,
                                     children: [
                                       Text(
-                                        surah!.surahName,
+                                        _surah!.surahName,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.poppins(
                                           color: Colors.white,
@@ -131,7 +131,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                                         height: 4,
                                       ),
                                       Text(
-                                        surah!.translation,
+                                        _surah!.translation,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.poppins(
                                           color: Colors.white,
@@ -154,7 +154,7 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            surah!.type.toUpperCase(),
+                                            _surah!.type.toUpperCase(),
                                             style: GoogleFonts.poppins(
                                               color: Colors.white,
                                               fontSize: 14,
@@ -174,8 +174,8 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                                             width: 5,
                                           ),
                                           Text(
-                                            surah != null
-                                                ? "${surah!.ayahCount} Ayat"
+                                            _surah != null
+                                                ? "${_surah!.ayahCount} Ayat"
                                                     .toUpperCase()
                                                 : ''.toUpperCase(),
                                             style: GoogleFonts.poppins(
@@ -205,13 +205,13 @@ class _DetailSurahScreenState extends State<DetailSurahScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return AyahItem(
-                                ayahNumber: surah!.ayahs![index].ayahNumber,
-                                text: surah!.ayahs![index].text,
-                                read: surah!.ayahs![index].read,
-                                translation: surah!.ayahs![index].translation,
+                                ayahNumber: _surah!.ayahs![index].ayahNumber,
+                                text: _surah!.ayahs![index].text,
+                                read: _surah!.ayahs![index].read,
+                                translation: _surah!.ayahs![index].translation,
                               );
                             },
-                            itemCount: surah!.ayahCount,
+                            itemCount: _surah!.ayahCount,
                           ),
                         ],
                       )

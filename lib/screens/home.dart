@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Surah> allSurahs = [];
+  List<Surah> _allSurahs = [];
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     QuranService.getSurahs().then((value) {
       setState(() {
-        allSurahs = value;
+        _allSurahs = value;
       });
     });
   }
@@ -190,20 +190,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    allSurahs.isNotEmpty
+                    _allSurahs.isNotEmpty
                         ? ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return SurahItem(
-                                surahNumber: allSurahs[index].surahNumber,
-                                surahName: allSurahs[index].surahName,
-                                type: allSurahs[index].type,
-                                ayahCount: allSurahs[index].ayahCount,
-                                arabicName: allSurahs[index].arabicName,
+                                surahNumber: _allSurahs[index].surahNumber,
+                                surahName: _allSurahs[index].surahName,
+                                type: _allSurahs[index].type,
+                                ayahCount: _allSurahs[index].ayahCount,
+                                arabicName: _allSurahs[index].arabicName,
                               );
                             },
-                            itemCount: allSurahs.length,
+                            itemCount: _allSurahs.length,
                           )
                         : const Text("Loading...")
                   ],

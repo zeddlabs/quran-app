@@ -13,7 +13,7 @@ class JadwalSholatScreen extends StatefulWidget {
 }
 
 class _JadwalSholatScreenState extends State<JadwalSholatScreen> {
-  List<City> allCities = [];
+  List<City> _allCities = [];
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _JadwalSholatScreenState extends State<JadwalSholatScreen> {
 
     JadwalSholatService.getCities().then((value) {
       setState(() {
-        allCities = value;
+        _allCities = value;
       });
     });
   }
@@ -68,18 +68,18 @@ class _JadwalSholatScreenState extends State<JadwalSholatScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: allCities.isNotEmpty
+                child: _allCities.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return CityItem(
                             number: index + 1,
-                            id: allCities[index].id,
-                            city: allCities[index].city,
+                            id: _allCities[index].id,
+                            city: _allCities[index].city,
                           );
                         },
-                        itemCount: allCities.length,
+                        itemCount: _allCities.length,
                       )
                     : const Text("Loading..."),
               ),

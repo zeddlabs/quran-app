@@ -21,7 +21,7 @@ class AyahItem extends StatefulWidget {
 }
 
 class _AyahItemState extends State<AyahItem> {
-  bool isBookmarked = false;
+  bool _isBookmarked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +71,10 @@ class _AyahItemState extends State<AyahItem> {
                     IconButton(
                       onPressed: () {
                         setState(() {
-                          isBookmarked = !isBookmarked;
+                          _isBookmarked = !_isBookmarked;
                         });
                       },
-                      icon: isBookmarked
+                      icon: _isBookmarked
                           ? const Icon(
                               Icons.bookmark,
                               color: Color(0xFF863ED5),

@@ -13,7 +13,7 @@ class AsmaulHusnaScreen extends StatefulWidget {
 }
 
 class _AsmaulHusnaScreenState extends State<AsmaulHusnaScreen> {
-  List<AsmaulHusna> allAsmaulHusna = [];
+  List<AsmaulHusna> _allAsmaulHusna = [];
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _AsmaulHusnaScreenState extends State<AsmaulHusnaScreen> {
 
     AsmaulHusnaService.getAsmaulHusna().then((value) {
       setState(() {
-        allAsmaulHusna = value;
+        _allAsmaulHusna = value;
       });
     });
   }
@@ -68,19 +68,19 @@ class _AsmaulHusnaScreenState extends State<AsmaulHusnaScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: allAsmaulHusna.isNotEmpty
+                child: _allAsmaulHusna.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return AsmaulHusnaItem(
-                            order: allAsmaulHusna[index].order,
-                            latin: allAsmaulHusna[index].latin,
-                            arabic: allAsmaulHusna[index].arabic,
-                            translation: allAsmaulHusna[index].translation,
+                            order: _allAsmaulHusna[index].order,
+                            latin: _allAsmaulHusna[index].latin,
+                            arabic: _allAsmaulHusna[index].arabic,
+                            translation: _allAsmaulHusna[index].translation,
                           );
                         },
-                        itemCount: allAsmaulHusna.length,
+                        itemCount: _allAsmaulHusna.length,
                       )
                     : const Text("Loading..."),
               ),

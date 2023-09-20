@@ -21,8 +21,8 @@ class DetailJadwalSholatScreen extends StatefulWidget {
 }
 
 class _DetailJadwalSholatScreenState extends State<DetailJadwalSholatScreen> {
-  JadwalSholat? jadwalSholat;
-  DateTime now = new DateTime.now();
+  JadwalSholat? _jadwalSholat;
+  final DateTime _now = DateTime.now();
 
   @override
   void initState() {
@@ -31,12 +31,12 @@ class _DetailJadwalSholatScreenState extends State<DetailJadwalSholatScreen> {
 
     JadwalSholatService.getJadwalSholat(
       widget.cityId,
-      now.year,
-      now.month,
-      now.day,
+      _now.year,
+      _now.month,
+      _now.day,
     ).then((value) {
       setState(() {
-        jadwalSholat = value;
+        _jadwalSholat = value;
       });
     });
   }
@@ -82,7 +82,7 @@ class _DetailJadwalSholatScreenState extends State<DetailJadwalSholatScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      jadwalSholat != null ? jadwalSholat!.date : "",
+                      _jadwalSholat != null ? _jadwalSholat!.date : "",
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF8789A3),
                         fontSize: 18,
@@ -132,30 +132,30 @@ class _DetailJadwalSholatScreenState extends State<DetailJadwalSholatScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    jadwalSholat != null
+                    _jadwalSholat != null
                         ? ListView(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             children: [
                               JadwalSholatItem(
                                 name: "Subuh",
-                                time: jadwalSholat!.subuh,
+                                time: _jadwalSholat!.subuh,
                               ),
                               JadwalSholatItem(
                                 name: "Dzuhur",
-                                time: jadwalSholat!.dzuhur,
+                                time: _jadwalSholat!.dzuhur,
                               ),
                               JadwalSholatItem(
                                 name: "Ashar",
-                                time: jadwalSholat!.ashar,
+                                time: _jadwalSholat!.ashar,
                               ),
                               JadwalSholatItem(
                                 name: "Maghrib",
-                                time: jadwalSholat!.maghrib,
+                                time: _jadwalSholat!.maghrib,
                               ),
                               JadwalSholatItem(
                                 name: "Isya",
-                                time: jadwalSholat!.isya,
+                                time: _jadwalSholat!.isya,
                               ),
                             ],
                           )
