@@ -9,7 +9,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  hasSeenOnboarding = await prefs.getInt('hasSeenOnboarding');
+  hasSeenOnboarding = prefs.getInt('hasSeenOnboarding');
   await prefs.setInt('hasSeenOnboarding', 1);
 
   runApp(const MainApp());
