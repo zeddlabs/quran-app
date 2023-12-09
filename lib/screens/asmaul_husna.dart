@@ -37,17 +37,13 @@ class _AsmaulHusnaScreenState extends State<AsmaulHusnaScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 24,
+                  top: 32,
                   left: 12,
                   right: 12,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset('assets/icons/menu.svg'),
-                    ),
                     Text(
                       "Asmaul Husna",
                       style: GoogleFonts.poppins(
@@ -56,15 +52,11 @@ class _AsmaulHusnaScreenState extends State<AsmaulHusnaScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset('assets/icons/search.svg'),
-                    ),
                   ],
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 32,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

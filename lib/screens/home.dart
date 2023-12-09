@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/models/surah.dart';
 import 'package:quran_app/services/quran.dart';
 import 'package:quran_app/widgets/surah_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,34 +38,26 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 24,
+                  top: 32,
                   left: 12,
                   right: 12,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset('assets/icons/menu.svg'),
-                    ),
                     Text(
-                      "Quran App",
+                      "AlQurania",
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF672CBC),
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset('assets/icons/search.svg'),
-                    ),
                   ],
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 32,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -83,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 4,
                     ),
                     Text(
-                      "Mhd. Zulfikar Pinem",
+                      "Saudaraku",
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF240F4F),
                         fontSize: 24,
@@ -120,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 8,
                                   ),
                                   Text(
-                                    "Last Read",
+                                    "QS. Al-Israa 9",
                                     style: GoogleFonts.poppins(
                                       color: Colors.white,
                                       fontSize: 14,
@@ -132,23 +125,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                "Al-Fatihah",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                "Ayat No. 1",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white.withOpacity(0.8),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Text(
+                                  "\"Sesungguhnya Al-Quran itu memberi petunjuk kepada jalan yang lebih lurus.\"",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ],
