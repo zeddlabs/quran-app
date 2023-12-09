@@ -20,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Quran App",
+                  "AlQurania",
                   style: GoogleFonts.poppins(
                     color: const Color(0xFF672CBC),
                     fontSize: 28,
