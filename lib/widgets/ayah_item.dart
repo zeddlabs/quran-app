@@ -1,12 +1,16 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AyahItem extends StatefulWidget {
   final int ayahNumber;
   final String text;
   final String read;
   final String translation;
+  final String audio;
+  final int lastReadAyah;
 
   const AyahItem({
     super.key,
@@ -14,6 +18,8 @@ class AyahItem extends StatefulWidget {
     required this.text,
     required this.read,
     required this.translation,
+    required this.audio,
+    required this.lastReadAyah,
   });
 
   @override
@@ -21,7 +27,17 @@ class AyahItem extends StatefulWidget {
 }
 
 class _AyahItemState extends State<AyahItem> {
-  bool _isBookmarked = false;
+  late SharedPreferences _prefs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SharedPreferences.getInstance().then((prefs) {
+      _prefs = prefs;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,16 +81,20 @@ class _AyahItemState extends State<AyahItem> {
                       icon: SvgPicture.asset('assets/icons/share.svg'),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        AudioPlayer().play(UrlSource(widget.audio));
+                      },
                       icon: SvgPicture.asset('assets/icons/play.svg'),
                     ),
                     IconButton(
                       onPressed: () {
-                        setState(() {
-                          _isBookmarked = !_isBookmarked;
-                        });
+                        if (widget.lastReadAyah == widget.ayahNumber) {
+                          _prefs.setInt('lastReadAyah', 0);
+                        } else {
+                          _prefs.setInt('lastReadAyah', widget.ayahNumber);
+                        }
                       },
-                      icon: _isBookmarked
+                      icon: widget.lastReadAyah == widget.ayahNumber
                           ? const Icon(
                               Icons.bookmark,
                               color: Color(0xFF863ED5),
@@ -93,8 +113,9 @@ class _AyahItemState extends State<AyahItem> {
             widget.text,
             style: GoogleFonts.amiri(
               color: const Color(0xFF240F4F),
-              fontSize: 18,
+              fontSize: 28,
               fontWeight: FontWeight.w700,
+              height: 2,
             ),
             textAlign: TextAlign.right,
           ),
