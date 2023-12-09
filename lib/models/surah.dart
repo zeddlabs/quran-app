@@ -35,12 +35,14 @@ class Ayah {
   String text;
   String read;
   String translation;
+  String audio;
 
   Ayah({
     required this.ayahNumber,
     required this.text,
     required this.read,
     required this.translation,
+    required this.audio,
   });
 
   factory Ayah.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ class Ayah {
       text: json['text']['ar'],
       read: json['text']['read'],
       translation: json['translation']['id'],
+      audio: json['audio']['url'],
     );
   }
 }
