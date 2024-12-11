@@ -25,7 +25,7 @@ Here are the steps to run this flutter project on your local computer.
 
 ## Author
 
-- [Mhd Zulfikar Pinem](https://github.com/zulfikarpinem)
+- [Mhd Zulfikar Pinem](https://github.com/zeddlabs)
 
 ## Contact
 
